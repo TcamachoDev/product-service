@@ -1,4 +1,6 @@
-val springdocVersion            = "3.18.0"
+val springdocVersion = "2.8.9"
+val loombokVersion = "1.18.30"
+val jUnitBoomVersion = "5.10.0"
 
 plugins {
     id("java")
@@ -17,6 +19,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation ("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 
     // Logs
     implementation("org.springframework.boot:spring-boot-starter-logging")
@@ -24,12 +27,19 @@ dependencies {
     // swagger
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}")
 
+    implementation("org.projectlombok:lombok:${loombokVersion}")
+    annotationProcessor("org.projectlombok:lombok:${loombokVersion}")
+
     testImplementation ("org.springframework.boot:spring-boot-starter-test")
 
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation(platform("org.junit:junit-bom:${jUnitBoomVersion}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.add("-parameters")
 }
