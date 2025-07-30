@@ -1,4 +1,3 @@
-val springdocVersion = "2.8.9"
 val loombokVersion = "1.18.30"
 val jUnitBoomVersion = "5.10.0"
 
@@ -23,9 +22,6 @@ dependencies {
 
     // Logs
     implementation("org.springframework.boot:spring-boot-starter-logging")
-
-    // swagger
-    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:${springdocVersion}")
 
     implementation("org.projectlombok:lombok:${loombokVersion}")
     annotationProcessor("org.projectlombok:lombok:${loombokVersion}")
